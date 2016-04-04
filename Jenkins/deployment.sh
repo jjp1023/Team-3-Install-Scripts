@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#--------------------------Base System Install - should be run on every system------------------------------
+#---------------------------Base System Install - should be run on every system------------------------------
 apt-get update
 apt-get install -y curl
 apt-get install -y git
@@ -16,8 +16,11 @@ cp terminalparty.zsh-theme ~/.oh-my-zsh/themes/terminalparty.zsh-theme
 cp zshrc ~/.zshrc
 apt-get install -y build-essential
 apt-get install -y php5
-#---------------------------------------End Base System Install---------------------------------------------
+#---------------------------------------End Base System Install----------------------------------------------
+
+#------------------------------------------Install Jenkins---------------------------------------------------
 wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
 sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt-get update
 sudo apt-get install jenkins
+#----------------------------------------Finish Install Jenkins----------------------------------------------
