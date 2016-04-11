@@ -44,9 +44,9 @@ echo "+ copy the output below to the deploy keys of the scripts repo.           
 echo "+ Repo: https://github.com/ITMT-430/Team-3-Install-Scripts                   +"
 echo "+                                                                            +"
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-echo -e Output to copy:/n/n
+echo Output to copy:
 cat ~/.ssh/gh_rsa.pub
-read -p "Press [Enter] key to start backup..."
+read -rsp $'Press any key to continue...\n' -n1 key
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
