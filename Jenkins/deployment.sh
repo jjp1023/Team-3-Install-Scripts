@@ -1,10 +1,5 @@
 #!/bin/bash
 
-#------------------------------------------Setup bash script-------------------------------------------------
-function pause {
-   read -p "$*"
-}
-#----------------------------------------End Setup bash script-----------------------------------------------
 
 #---------------------------Base System Install - should be run on every system------------------------------
 apt-get update
@@ -51,7 +46,7 @@ echo +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo -e Output to copy:/n/n
 cat ~/.ssh/gh_rsa.pub
 echo -e /n/n/n To continue, press [Enter].
-pause ''
+read -n1 -r -p "Press any key to continue..." key
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
