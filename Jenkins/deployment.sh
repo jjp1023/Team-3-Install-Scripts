@@ -7,7 +7,9 @@ apt-get install -y curl
 apt-get install -y git
 apt-get install -y vim
 apt-get install -y zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+cp ~/.zshrc ~/.zshrc.orig
 mkdir /bs
 cd /bs
 git clone https://github.com/thegeekkid/zshconfig.git
@@ -63,3 +65,4 @@ echo +  your script kiddie quest and installed and configured Jenkins.  Good bye
 echo +  sudo rm -rf /                                                               +
 echo +                                                                              +
 echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+chsh -s /bin/zsh
