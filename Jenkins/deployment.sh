@@ -46,7 +46,7 @@ echo "+                                                                         
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo Output to copy:
 cat ~/.ssh/gh_rsa.pub
-read -rsp $'Press any key to continue...\n' -n1 key
+read -rp $'Press any key to continue...\n' -n1 key
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
