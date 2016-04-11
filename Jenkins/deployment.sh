@@ -53,7 +53,7 @@ read -p "Press enter to continue." nothing
 #----------------------------------------Configure Jenkins---------------------------------------------------
 service jenkins stop
 cd /var/lib/
-rm -rf /var/lib/jenkins/*
+rm -rf /var/lib/jenkins
 git clone git@github.com:ITMT-430/team-3-jenkins-config.git /var/lib/jenkins
 service jenkins start
 #---------------------------------------End Configure Jenkins------------------------------------------------
