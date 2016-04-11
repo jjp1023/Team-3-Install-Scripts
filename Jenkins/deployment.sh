@@ -25,7 +25,7 @@ apt-get install -y php5
 wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
 sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
 sudo apt-get update
-sudo apt-get install jenkins
+sudo apt-get install -y jenkins
 #----------------------------------------Finish Install Jenkins----------------------------------------------
 
 #------------------------------------------Configure System--------------------------------------------------
@@ -37,14 +37,14 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/gh_rsa
 pause 'Press [Enter] key to continue...'
 clear
-echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-echo +                                                                              +
-echo +  Congratulations oh system administrator!  You have successfully advanced    +
-echo +  to level of "script kiddie".  To advance to the next level, you will to     +
-echo +  copy the output below to the deploy keys (read/write) of the scripts repo.  +
-echo +  (https://github.com/ITMT-430/Team-3-Install-Scripts).                       +
-echo +                                                                              +
-echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo +                                                                            +
+echo + Congratulations oh system administrator!  You have successfully advanced   +
+echo + to level of "script kiddie".  To advance to the next level, you will to    +
+echo + copy the output below to the deploy keys (read/write) of the scripts repo. +
+echo + Repo: https://github.com/ITMT-430/Team-3-Install-Scripts                   +
+echo +                                                                            +
+echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 echo -e Output to copy:/n/n
 cat ~/.ssh/gh_rsa.pub
 echo -e /n/n/n To continue, press [Enter].
@@ -58,11 +58,11 @@ rm -rf /var/lib/jenkins/*
 git clone git@github.com:ITMT-430/team-3-jenkins-config.git
 service jenkins start
 #---------------------------------------End Configure Jenkins------------------------------------------------
-echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-echo +                                                                              +
-echo +  Congratulations oh system administrator!  You have successfully completed   +
-echo +  your script kiddie quest and installed and configured Jenkins.  Good bye!   +
-echo +  sudo rm -rf /                                                               +
-echo +                                                                              +
-echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+echo +                                                                            +
+echo + Congratulations oh system administrator!  You have successfully completed  +
+echo + your script kiddie quest and installed and configured Jenkins.  Good bye!  +
+echo + sudo rm -rf /                                                              +
+echo +                                                                            +
+echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 chsh -s /bin/zsh
