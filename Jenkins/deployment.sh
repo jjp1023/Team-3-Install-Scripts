@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 
 #---------------------------Base System Install - should be run on every system------------------------------
@@ -46,7 +46,8 @@ echo "+                                                                         
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo Output to copy:
 cat ~/.ssh/gh_rsa.pub
-read -rp $'Press any key to continue...\n' key
+echo The script will continue after 30 seconds.
+sleep 30
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
