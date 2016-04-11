@@ -30,7 +30,6 @@ sudo apt-get install -y jenkins
 
 #------------------------------------------Configure System--------------------------------------------------
 echo alias confj="cd /var/lib/jenkins">>~/.zshrc
-echo clear>>~/.zshrc
 echo echo "You Are Doomed OS (C) 2016 - Brian Semrau">>~/.zshrc
 ssh-keygen -t rsa -b 4096 -C "brian@geekkidconsulting.com" -f /root/.ssh/gh_rsa -N ""
 eval "$(ssh-agent -s)"
@@ -53,9 +52,9 @@ read -p "Press enter to continue." nothing
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
 service jenkins stop
-cd /var/lib/jenkins
+cd /var/lib/
 rm -rf /var/lib/jenkins/*
-git clone git@github.com:ITMT-430/team-3-jenkins-config.git
+git clone git@github.com:ITMT-430/team-3-jenkins-config.git /var/lib/jenkins
 service jenkins start
 #---------------------------------------End Configure Jenkins------------------------------------------------
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
