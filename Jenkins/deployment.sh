@@ -35,20 +35,18 @@ echo echo "You Are Doomed OS (C) 2016 - Brian Semrau">>~/.zshrc
 ssh-keygen -t rsa -b 4096 -C "brian@geekkidconsulting.com" -f /root/.ssh/gh_rsa -N ""
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/gh_rsa
-pause 'Press [Enter] key to continue...'
 clear
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "+                                                                            +"
 echo "+ Congratulations oh system administrator!  You have successfully advanced   +"
-echo "+ to level of ""script kiddie"".  To advance to the next level, you will to    +"
+echo "+ to level of ""script kiddie"".  To advance to the next level, you will to     +"
 echo "+ copy the output below to the deploy keys of the scripts repo.              +"
 echo "+ Repo: https://github.com/ITMT-430/Team-3-Install-Scripts                   +"
 echo "+                                                                            +"
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo -e Output to copy:/n/n
 cat ~/.ssh/gh_rsa.pub
-echo -e /n/n/n To continue, press [Enter].
-read -n1 -r -p "Press any key to continue..." key
+read -p "Press [Enter] key to start backup..."
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
