@@ -39,7 +39,7 @@ clear
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "+                                                                            +"
 echo "+ Congratulations oh system administrator!  You have successfully advanced   +"
-echo "+ to level of ""script kiddie"".  To advance to the next level, you will to     +"
+echo "+ to level of ""script kiddie"".  To advance to the next level, you will to      +"
 echo "+ copy the output below to the deploy keys of the scripts repo.              +"
 echo "+ Repo: https://github.com/ITMT-430/Team-3-Install-Scripts                   +"
 echo "+                                                                            +"
@@ -48,7 +48,7 @@ echo Output to copy:
 cat ~/.ssh/gh_rsa.pub
 read -p "Select the text to copy, the press enter to copy (in putty)" nothing
 clear
-read -p "Press enter to continue."
+read -p "Press enter to continue." nothing
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
