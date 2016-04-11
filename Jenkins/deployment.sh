@@ -46,8 +46,7 @@ echo "+                                                                         
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo Output to copy:
 cat ~/.ssh/gh_rsa.pub
-echo The script will continue after 30 seconds.
-sleep 30
+read -p "Press enter to continue" nothing
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
