@@ -46,7 +46,9 @@ echo "+                                                                         
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo Output to copy:
 cat ~/.ssh/gh_rsa.pub
-read -p "Press enter to continue" nothing
+read -p "Select the text to copy, the press enter to copy (in putty)" nothing
+clear
+read -p "Press enter to continue."
 #--------------------------------------Finish Configure System-----------------------------------------------
 
 #----------------------------------------Configure Jenkins---------------------------------------------------
