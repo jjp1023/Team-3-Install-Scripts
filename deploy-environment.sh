@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Usage: Run on vagrant machine as root (not sudo - actually switch to root):
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/deploy-environment.sh)"
 apt-get update
 apt-get install -y git
 apt-get install -y python-setuptools python-dev libxslt1-dev libxml2 libxml2-dev zlib1g-dev
