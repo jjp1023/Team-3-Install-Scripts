@@ -48,18 +48,18 @@ cat ~/.ssh/gh_rsa.pub
 read -p "Select the text to copy, the press enter to copy (in putty)" nothing
 clear
 read -p "Press enter to continue." nothing
-echo "cd /var/lib/jenkins">>/etc/cron.d/backup_checker.sh
-echo "git status | grep 'nothing to commit' &> /dev/null">>/etc/cron.d/backup_checker.sh
-echo "if git status | grep -q 'nothing to commit'; then">>/etc/cron.d/backup_checker.sh
-echo "    exit">>/etc/cron.d/backup_checker.sh
-echo "else">>/etc/cron.d/backup_checker.sh
-echo "    git add --all">>/etc/cron.d/backup_checker.sh
-echo "    git commit -m 'Automatic backup'">>/etc/cron.d/backup_checker.sh
-echo "    git push origin master">>/etc/cron.d/backup_checker.sh
-echo "    exit">>/etc/cron.d/backup_checker.sh
-echo "fi">>/etc/cron.d/backup_checker.sh
-chmod +x /etc/cron.d/backup_checker.sh
-echo "15 * * * * sh -c /etc/cron.d/backup_checker.sh">>/etc/crontab
+echo "cd /var/lib/jenkins">>/etc/cron.hourly/backup_checker.sh
+echo "git status | grep 'nothing to commit' &> /dev/null">>/etc/cron.hourly/backup_checker.sh
+echo "if git status | grep -q 'nothing to commit'; then">>/etc/cron.hourly/backup_checker.sh
+echo "    exit">>/etc/cron.hourly/backup_checker.sh
+echo "else">>/etc/cron.hourly/backup_checker.sh
+echo "    git add --all">>/etc/cron.hourly/backup_checker.sh
+echo "    git commit -m 'Automatic backup'">>/etc/cron.hourly/backup_checker.sh
+echo "    git push origin master">>/etc/cron.hourly/backup_checker.sh
+echo "    exit">>/etc/cron.hourly/backup_checker.sh
+echo "fi">>/etc/cron.hourly/backup_checker.sh
+chmod +x /etc/cron.hourly/backup_checker.sh
+echo "15 * * * * sh -c /etc/cron.hourly/backup_checker.sh">>/etc/crontab
 #--------------------------------------Finish Configure System-----------------------------------------------
 #----------------------------------------Configure Jenkins---------------------------------------------------
 service jenkins stop
