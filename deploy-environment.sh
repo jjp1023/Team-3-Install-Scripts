@@ -5,6 +5,7 @@
 apt-get update
 apt-get install -y git
 apt-get install -y python-setuptools python-dev libxslt1-dev libxml2 libxml2-dev zlib1g-dev
+apt-get remove python-requests
 git clone https://github.com/jhajek/euca2ools.git /euca2ools
 cd /euca2ools
 git checkout origin/maint-3.1
@@ -14,5 +15,5 @@ clear
 read -p "Copy your credential file to /euca2ools/creds.zip, then press any key to continue." nothing
 unzip -d creds creds.zip
 source /euca2ools/creds/eucarc
-source /euca2ools/creds/eucarc>>~/.bashrc
-source /euca2ools/creds/eucarc>>~/.zshrc
+echo "source /euca2ools/creds/eucarc">>~/.bashrc
+echo "source /euca2ools/creds/eucarc">>~/.zshrc
