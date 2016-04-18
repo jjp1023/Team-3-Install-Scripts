@@ -29,9 +29,10 @@ echo '*      Sleeping for 20 seconds.        *'
 echo '*       Please freaking wait.          *'
 echo '*                                      *'
 echo '****************************************'
+sleep 20
+echo ""
 instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
 ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
-sleep 20
 read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
 confirm="n"
 while [![${confirm}=="Y"]]; do
