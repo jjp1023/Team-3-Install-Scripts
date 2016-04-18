@@ -24,6 +24,9 @@ euca-version
 output="$(euca-run-instances emi-c87b2863 -n 1 -k team3-new -g 'Team 3 Jenkins' -t c1.xlarge)"
 instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
 ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
+echo $output
+echo $instance
+echo $ipad
 read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
 confirm="n"
 while [![${confirm}=="Y"]]; do
