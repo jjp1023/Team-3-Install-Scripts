@@ -38,7 +38,7 @@ confirm="n"
 while [![${confirm}=="Y"]]; do
   read -p "Are you ready to continue the script? (Y/n)" confirm
 done
-ssh root@${ipad} 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Jenkins/deployment.sh)"'
+ssh root@${ipad} 'bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Jenkins/deployment.sh)'
 cont="True"
 read -p "Did the script complete successfully? (Y/n)" confirm
 if [ ![ ${confirm}=="Y" ] ]
