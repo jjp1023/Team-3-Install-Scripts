@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -p
 
 
 #---------------------------Base System Install - should be run on every system------------------------------
