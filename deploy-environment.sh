@@ -21,7 +21,7 @@ echo "Sometimes one of these commands doesn't work right in a script."
 echo "If there was an error above, please open a new terminal and type:"
 read -p "source /euca2ools/creds/eucarc" nothing
 euca-version
-output="$(euca-run-instances emi-c87b2863 -n 1 -k team3-new -g 'Team 3 Jenkins' -t c1.xlarge)"
+output="$(euca-run-instances emi-c87b2863 -n 1 -k team3-new -g 'Team 3 Jenkins' -t cc1.4xlarge)"
 echo ""
 echo '****************************************'
 echo '*                                      *'
