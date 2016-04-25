@@ -54,7 +54,7 @@ add-apt-repository ppa:ondrej/php5 > /dev/null 2>&1
 add-apt-repository ppa:chris-lea/node.js > /dev/null 2>&1
 
 echo -e "\n--- Updating packages list ---\n"
-apt-get -qq update
+apt-get update
 
 echo -e "\n--- Install MySQL specific packages and settings ---\n"
 echo "mysql-server mysql-server/root_password password $DBPASSWD" | debconf-set-selections
@@ -64,7 +64,7 @@ echo "phpmyadmin phpmyadmin/app-password-confirm password $DBPASSWD" | debconf-s
 echo "phpmyadmin phpmyadmin/mysql/admin-pass password $DBPASSWD" | debconf-set-selections
 echo "phpmyadmin phpmyadmin/mysql/app-pass password $DBPASSWD" | debconf-set-selections
 echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections
-apt-get -y install mysql-server-5.5 phpmyadmin > /dev/null 2>&1
+apt-get -y install mysql-server-5.5 phpmyadmin
 
 echo -e "\n--- Setting up our MySQL user and db ---\n"
 mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME"
