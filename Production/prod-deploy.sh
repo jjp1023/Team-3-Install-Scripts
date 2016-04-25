@@ -38,7 +38,7 @@ APPENV=local
 DBHOST=localhost
 DBNAME=irl
 DBUSER=root
-DBPASSWD=$(NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1))
+DBPASSWD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
 echo -e "\n--- Mkay, installing now... ---\n"
 apt-get install -y debconf-utils
