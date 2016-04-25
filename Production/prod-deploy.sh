@@ -1,5 +1,6 @@
 #!/bin/bash -p
 
+# Usage: bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Production/prod-deploy.sh)
 
 #---------------------------Base System Install - should be run on every system------------------------------
 apt-get update
@@ -40,6 +41,7 @@ DBUSER=root
 DBPASSWD=$(NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1))
 
 echo -e "\n--- Mkay, installing now... ---\n"
+apt-get install -y debconf-utils
 
 echo -e "\n--- Updating packages list ---\n"
 apt-get -qq update
