@@ -37,7 +37,7 @@ APPENV=local
 DBHOST=localhost
 DBNAME=irl
 DBUSER=root
-DBPASSWD=Rey@120133
+DBPASSWD=$(NEW_UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1))
 
 echo -e "\n--- Mkay, installing now... ---\n"
 
@@ -178,7 +178,7 @@ git clone https://github.com/ITMT-430/team-3-irl.git > /dev/null 2>&1
 echo -e "\n--- Add environment variables locally for artisan ---\n"
 echo -e "\n--- TEST YOUR CONNECTION: 192.168.101.102 ---\n"
 echo -e "\n--- Happy Coding:) ---\n"
-cat >> /home/vagrant/.bashrc <<EOF
+cat >> /home/vagrant/.zshrc <<EOF
 
 # Set envvars
 export APP_ENV=$APPENV
@@ -187,3 +187,13 @@ export DB_NAME=$DBNAME
 export DB_USER=$DBUSER
 export DB_PASS=$DBPASSWD
 EOF
+
+clear
+echo "+++++++++++++++++++++++++++++++++++++"
+echo "+                                   +"
+echo "+ Hey script kiddie: Note the pw    +"
+echo "+ below!                            +"
+echo "+                                   +"
+echo "+++++++++++++++++++++++++++++++++++++"
+echo Password:
+echo $DBPASSWD
