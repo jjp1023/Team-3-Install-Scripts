@@ -205,3 +205,4 @@ echo "+                                   +"
 echo "+++++++++++++++++++++++++++++++++++++"
 echo Password:
 echo $DBPASSWD
+echo $DBPASSWD>>/randopw.txt
