@@ -190,6 +190,12 @@ export DB_USER=$DBUSER
 export DB_PASS=$DBPASSWD
 EOF
 
+cd /bs
+git clone https://github.com/letsencrypt/letsencrypt
+cd letsencrypt/letsencrypt
+./letsencrypt-auto
+letsencrypt --apache
+
 clear
 echo "+++++++++++++++++++++++++++++++++++++"
 echo "+                                   +"
