@@ -19,6 +19,11 @@ cp terminalparty.zsh-theme ~/.oh-my-zsh/themes/terminalparty.zsh-theme
 cp zshrc ~/.zshrc
 apt-get install -y build-essential
 apt-get install -y php5
+apt-get install -y php5-dev
+apt-get install -y php-pear
+pear channel-discover pear.phing.info
+pear install phing/phing
+pear install VersionControl_Git-alpha
 #---------------------------------------End Base System Install----------------------------------------------
 
 #------------------------------------------Install Jenkins---------------------------------------------------
