@@ -41,10 +41,10 @@ done
 ssh root@${ipad} 'bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Jenkins/deployment.sh)'
 cont="True"
 read -p "Did the script complete successfully? (Y/n)" confirm
-if [![ ${confirm} = "Y" ]]
+if [![ ${confirm} = "Y" ]];
 then
   read -p "Are you sure? (Y/n)" confirm
-  if [![ ${confirm} = "Y" ]]
+  if [![ ${confirm} = "Y" ]];
   then
     cont="False"
     euca-terminate-instances ${instance}
@@ -54,7 +54,7 @@ then
     exit
   fi
 fi
-if [ ${cont}="True" ]
+if [ ${cont} = "True" ];
 then
   euca-associate-address -i ${instance} -a 64.131.111.60
   read -p "Proper address assigned.  Jenkins should be up and running."
