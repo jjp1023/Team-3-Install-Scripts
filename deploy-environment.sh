@@ -45,8 +45,8 @@ function jankie {
   ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
   read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
   confirm="n"
-  while [![ ${confirm} = "Y" ]]; do
-  read -p "Are you ready to continue the script? (Y/n)" confirm
+  while [ ! ${confirm} = "Y" ]; do
+    read -p "Are you ready to continue the script? (Y/n)" confirm
   done
   ssh root@${ipad} 'bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Jenkins/deployment.sh)'
   cont="True"
