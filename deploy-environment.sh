@@ -35,16 +35,16 @@ instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
 ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
 read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
 confirm="n"
-while [![${confirm}=="Y"]]; do
+while [![ ${confirm} = "Y" ]]; do
   read -p "Are you ready to continue the script? (Y/n)" confirm
 done
 ssh root@${ipad} 'bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Jenkins/deployment.sh)'
 cont="True"
 read -p "Did the script complete successfully? (Y/n)" confirm
-if [![${confirm}=="Y"]]
+if [![ ${confirm} = "Y" ]]
 then
   read -p "Are you sure? (Y/n)" confirm
-  if [![ ${confirm}=="Y"]]
+  if [![ ${confirm} = "Y" ]]
   then
     cont="False"
     euca-terminate-instances ${instance}
@@ -54,7 +54,7 @@ then
     exit
   fi
 fi
-if [${cont}=="True"]
+if [ ${cont}="True" ]
 then
   euca-associate-address -i ${instance} -a 64.131.111.60
   read -p "Proper address assigned.  Jenkins should be up and running."
