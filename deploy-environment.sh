@@ -94,6 +94,7 @@ if [ $USER = "root" ]; then
     git checkout origin/maint-3.1
     python setup.py install
     read -p "Verify there are no errors up to this point, then press any key to continue." nothing
+    chmod 777 /euca2ools
     clear
     read -p "Copy your credential file to /euca2ools/creds.zip, then press any key to continue." nothing
     unzip -d creds creds.zip
