@@ -83,6 +83,8 @@ function everything {
 if [ $USER = "root" ]; then
   if test -f "/bs/eucainstall";
   then
+    echo Euca setup completed.  Moving on.
+  else
     apt-get update
     apt-get install -y git
     apt-get install -y python-setuptools python-dev libxslt1-dev libxml2 libxml2-dev zlib1g-dev
