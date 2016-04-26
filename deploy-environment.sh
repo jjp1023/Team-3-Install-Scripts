@@ -44,6 +44,11 @@ function jankie {
   instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
   ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
   read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
+  if test -f "~/.ssh/team3-key";
+  then
+    eval "$(ssh-agent)"
+    ssh-add ~/.ssh/team3-key
+  fi
   confirm="n"
   while [ ! ${confirm} = "Y" ]; do
     read -p "Are you ready to continue the script? (Y/n)" confirm
