@@ -13,7 +13,7 @@ function mainmenu {
   echo '*  What would you like to install/do?  *'
   echo '*                                      *'
   echo '****************************************'
-  OPTIONS="Jenkins Production 'Full Environment' Quit"
+  OPTIONS="Jenkins Production Full-Environment Quit"
   select opt in $OPTIONS; do
     if [ "$opt" = "Jenkins" ]; then
       jankie
