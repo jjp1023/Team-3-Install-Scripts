@@ -128,8 +128,6 @@ cat > /etc/apache2/sites-enabled/default-ssl.conf <<EOF
     ErrorLog \${APACHE_LOG_DIR}/error.log
     CustomLog \${APACHE_LOG_DIR}/access.log combined
     SSLEngine on
-    SSLCertificateFile /etc/letsencrypt/live/irl.sat.iit.edu/cert.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/irl.sat.iit.edu/privkey.pem
     SetEnv APP_ENV $APPENV
     SetEnv DB_HOST $DBHOST
     SetEnv DB_NAME $DBNAME
@@ -219,7 +217,7 @@ git clone https://github.com/letsencrypt/letsencrypt
 cd letsencrypt
 a2enmod ssl
 service apache2 restart
-./letsencrypt-auto --text --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
+#./letsencrypt-auto --text --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
 
 clear
 echo "+++++++++++++++++++++++++++++++++++++"
