@@ -173,8 +173,32 @@ mysql -uroot -p$DBPASSWD -e "USE $DBNAME"
 mysql -u root -p$DBPASSWD $DBNAME < /vagrant/backup.sql
 
 echo -e "\n--- Getting the latest files from team-3-irl ---\n"
-cd /vagrant/clone-in-here
-git clone https://github.com/ITMT-430/team-3-irl.git > /dev/null 2>&1
+git clone https://github.com/ITMT-430/team-3-irl.git /var/www/html
+cd /var/www
+echo "|1|9OsmSEuZ5EMLdubXJqvGQWKZy7U=|jPTfKv77HnP0Y43rUWVYFEHTYYg= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+|1|4kcqAWcBo5grhb07eErD5NS2jd0=|WQmwnrFYtZtb7St9xOaVwkxSyjM= ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
+">>/root/.ssh/known_hosts
+
+ssh-keygen -t rsa -b 4096 -C "brian@geekkidconsulting.com" -f /root/.ssh/gh_rsa -N ""
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/gh_rsa
+nothing=""
+clear
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo "+                                                                            +"
+echo "+ Congratulations oh system administrator!  You have successfully advanced   +"
+echo "+ to level of ""script kiddie"".  To advance to the next level, you will to      +"
+echo "+ copy the output below to the deploy keys of the scripts repo.              +"
+echo "+ Repo: https://github.com/ITMT-430/team3-vagrant                            +"
+echo "+                                                                            +"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+echo Output to copy:
+cat ~/.ssh/gh_rsa.pub
+read -p "Select the text to copy, the press enter to copy (in putty)" nothing
+clear
+read -p "Press enter to continue." nothing
+git clone git@github.com:ITMT-430/team3-vagrant.git
+cp /var/www/team3-vagrant/clone-in-here/* /var/www/
 
 
 echo -e "\n--- Add environment variables locally for artisan ---\n"
