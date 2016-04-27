@@ -197,6 +197,8 @@ read -p "Press enter to continue." nothing
 git clone git@github.com:ITMT-430/team3-vagrant.git
 cp -R /var/www/team3-vagrant/clone-in-here/* /var/www/
 rm -rf /var/www/team3-vagrant
+rm -rf /var/www/html/index.html
+git clone https://github.com/ITMT-430/team-3-irl.git /var/www/html
 
 
 echo -e "\n--- Add environment variables locally for artisan ---\n"
@@ -230,5 +232,5 @@ echo $DBPASSWD
 echo $DBPASSWD>>/randopw.txt
 echo '<?php'>/var/www/passwords.php
 echo '$dbusername="root";'>>/var/www/passwords.php
-echo '$dbpassword="$DBPASSWD";'>>/var/www/passwords.php
+echo '$dbpassword="' $DBPASSWD '";'>>/var/www/passwords.php
 echo '?>'>>/var/www/passwords.php
