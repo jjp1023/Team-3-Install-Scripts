@@ -54,7 +54,6 @@ function jankie {
     read -p "Are you ready to continue the script? (Y/n)" confirm
   done
   ssh root@${ipad} 'bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Jenkins/deployment.sh)'
-  cont="True"
   read -p "Did the script complete successfully? (Y/n)" confirm
   if [ ${confirm} = "Y" ];
   then
@@ -70,11 +69,51 @@ function jankie {
       echo please troubleshoot the script.
       exit
     fi
-  fi 
+  fi
+  mainmenu
 }
 
 function production {
-  echo "Production isn't ready yet."
+  output="$(euca-run-instances emi-c87b2863 -n 1 -k team3-new -g 'default' -t m2.xlarge)"
+  echo ""
+  echo '****************************************'
+  echo '*                                      *'
+  echo '*      Sleeping for 20 seconds.        *'
+  echo '*       Please freaking wait.          *'
+  echo '*                                      *'
+  echo '****************************************'
+  sleep 20
+  echo ""
+  instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
+  ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
+  read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
+  if test -f "~/.ssh/team3-key";
+  then
+    eval "$(ssh-agent)"
+    ssh-add ~/.ssh/team3-key
+  fi
+  confirm="n"
+  while [ ! ${confirm} = "Y" ]; do
+    read -p "Are you ready to continue the script? (Y/n)" confirm
+  done
+  ssh root@${ipad} 'bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Production/prod-deploy.sh)'
+  read -p "Did the script complete successfully? (Y/n)" confirm
+  if [ ${confirm} = "Y" ];
+  then
+    #euca-associate-address -i ${instance} -a 64.131.111.60
+    #read -p "Jenkins should be up and running."
+    echo Script not finished yet.
+  else
+    read -p "Are you sure? (Y/n)" confirm
+    if [ ${confirm} = "Y" ];
+    then
+      euca-terminate-instances ${instance}
+      echo Euca instance terminated due to script error.
+      echo Please attempt running again, if it still fails,
+      echo please troubleshoot the script.
+      exit
+    fi
+  fi
   mainmenu
 }
 
