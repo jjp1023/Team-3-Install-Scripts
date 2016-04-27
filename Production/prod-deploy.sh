@@ -217,8 +217,9 @@ EOF
 cd /bs
 git clone https://github.com/letsencrypt/letsencrypt
 cd letsencrypt
-apt-get upgrade -y
-./letsencrypt-auto --apache --text -d irl.sat.iit.edu -d www.irl.sat.iit.edu
+a2enmod ssl
+service apache2 restart
+./letsencrypt-auto --text --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
 
 clear
 echo "+++++++++++++++++++++++++++++++++++++"
