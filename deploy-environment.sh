@@ -62,7 +62,7 @@ function jankie {
     read -p "Jenkins should be up and running."
   else
     read -p "Are you sure? (Y/n)" confirm
-    if [ ! ${confirm} = "Y" ];
+    if [ ${confirm} = "Y" ];
     then
       euca-terminate-instances ${instance}
       echo Euca instance terminated due to script error.
