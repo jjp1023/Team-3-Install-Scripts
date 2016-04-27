@@ -214,7 +214,7 @@ EOF
 
 cd /bs
 git clone https://github.com/letsencrypt/letsencrypt
-cd letsencrypt/letsencrypt
+cd letsencrypt
 ./letsencrypt-auto
 letsencrypt --apache
 
@@ -228,3 +228,7 @@ echo "+++++++++++++++++++++++++++++++++++++"
 echo Password:
 echo $DBPASSWD
 echo $DBPASSWD>>/randopw.txt
+echo '<?php'>/var/www/passwords.php
+echo '$dbusername="root";'>>/var/www/passwords.php
+echo '$dbpassword="$DBPASSWD";'>>/var/www/passwords.php
+echo '?>'>>/var/www/passwords.php
