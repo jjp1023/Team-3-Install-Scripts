@@ -107,8 +107,7 @@ cat > /etc/apache2/sites-enabled/000-default.conf <<EOF
 <VirtualHost *:80>
     ServerName irl.sat.iit.edu
     Redirect / https://irl.sat.iit.edu
-    ServerAdmin info@geekkidconsulting.com
-    DocumentRoot /var/www
+    DocumentRoot /var/www/html
     ErrorLog \${APACHE_LOG_DIR}/error.log
     CustomLog \${APACHE_LOG_DIR}/access.log combined
     SetEnv APP_ENV $APPENV
@@ -121,7 +120,6 @@ EOF
 
 cat > /etc/apache2/sites-enabled/default-ssl.conf <<EOF
 <VirtualHost _default_:443>
-    ServerAdmin info@geekkidconsulting.com
     ServerName irl.sat.iit.edu
     ServerAlias www.irl.sat.iit.edu
     DocumentRoot /var/www/html
