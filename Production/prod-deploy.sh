@@ -79,9 +79,6 @@ a2enmod rewrite > /dev/null 2>&1
 echo -e "\n--- Allowing Apache override to all ---\n"
 sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 
-echo -e "\n--- Setting document root to public directory ---\n"
-rm -rf /var/www
-ln -fs /vagrant/clone-in-here/team-3-irl /var/www
 
 #for testing
 #echo -e "\n--- We definitly need to see the PHP errors, turning them on ---\n"
