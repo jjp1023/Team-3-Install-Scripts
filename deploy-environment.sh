@@ -56,24 +56,21 @@ function jankie {
   ssh root@${ipad} 'bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/Jenkins/deployment.sh)'
   cont="True"
   read -p "Did the script complete successfully? (Y/n)" confirm
-  if [ ! ${confirm} = "Y" ];
+  if [ ${confirm} = "Y" ];
   then
+    euca-associate-address -i ${instance} -a 64.131.111.60
+    read -p "Jenkins should be up and running."
+  else
     read -p "Are you sure? (Y/n)" confirm
     if [ ! ${confirm} = "Y" ];
     then
-      cont="False"
       euca-terminate-instances ${instance}
       echo Euca instance terminated due to script error.
       echo Please attempt running again, if it still fails,
       echo please troubleshoot the script.
       exit
     fi
-  fi
-  if [ ${cont} = "True" ];
-  then
-    euca-associate-address -i ${instance} -a 64.131.111.60
-    read -p "Proper address assigned.  Jenkins should be up and running."
-  fi
+  fi 
 }
 
 function production {
