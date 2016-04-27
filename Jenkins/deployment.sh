@@ -73,7 +73,7 @@ cd /var/lib/
 rm -rf /var/lib/jenkins
 mkdir /var/lib/jenkins
 chmod 777 /var/lib/jenkins
-bash <("git clone git@github.com:ITMT-430/team-3-jenkins-config.git /var/lib/jenkins/")
+bash <("git clone git@github.com:ITMT-430/team-3-jenkins-config.git /root/jenkins-config/")
 #Jenkins always crashes without 777 permissions.  Tried a ton of things, can't figure out a way around it.  :/
 #Reset permissions after clone just in case.
 chmod 777 /var/lib/jenkins
