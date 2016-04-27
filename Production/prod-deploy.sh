@@ -217,8 +217,7 @@ EOF
 cd /bs
 git clone https://github.com/letsencrypt/letsencrypt
 cd letsencrypt
-./letsencrypt-auto
-letsencrypt --apache
+./letsencrypt-auto --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
 
 clear
 echo "+++++++++++++++++++++++++++++++++++++"
