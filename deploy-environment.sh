@@ -74,12 +74,12 @@ function jankie {
 }
 
 function production {
-  echo Production isn''t ready yet.
+  echo "Production isn't ready yet."
   mainmenu
 }
 
 function everything {
-  echo Function ""everything"" isn''t ready yet.
+  echo "Function ""everything"" isn't ready yet."
   mainmenu
 }
 
@@ -109,7 +109,7 @@ if [ $USER = "root" ]; then
   mainmenu
 else
   clear
-  echo Hey you!  Ya... you!  You''re an idiot!
+  echo "Hey you!  Ya... you!  You're an idiot!"
   echo Read the freaking documentation!
   echo You''re supposed to run this as root!!!
   read -p "Go learn how to computer." nothing
