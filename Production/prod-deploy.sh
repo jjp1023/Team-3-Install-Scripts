@@ -217,6 +217,7 @@ EOF
 cd /bs
 git clone https://github.com/letsencrypt/letsencrypt
 cd letsencrypt
+apt-get upgrade -y
 ./letsencrypt-auto --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
 
 clear
