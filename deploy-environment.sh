@@ -111,6 +111,6 @@ else
   clear
   echo "Hey you!  Ya... you!  You're an idiot!"
   echo Read the freaking documentation!
-  echo You''re supposed to run this as root!!!
+  echo "You're supposed to run this as root!!!"
   read -p "Go learn how to computer." nothing
 fi
