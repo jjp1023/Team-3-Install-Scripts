@@ -71,6 +71,7 @@ echo "15 * * * * sh -c /etc/cron.hourly/backup_checker.sh">>/etc/crontab
 service jenkins stop
 cd /var/lib/
 rm -rf /var/lib/jenkins
+mkdir /var/lib/jenkins
 bash <("git clone git@github.com:ITMT-430/team-3-jenkins-config.git /var/lib/jenkins")
 #Jenkins always crashes without 777 permissions.  Tried a ton of things, can't figure out a way around it.  :/
 chmod 777 /var/lib/jenkins
