@@ -195,7 +195,8 @@ read -p "Select the text to copy, the press enter to copy (in putty)" nothing
 clear
 read -p "Press enter to continue." nothing
 git clone git@github.com:ITMT-430/team3-vagrant.git
-cp /var/www/team3-vagrant/clone-in-here/* /var/www/
+cp -R /var/www/team3-vagrant/clone-in-here/* /var/www/
+rm -rf /var/www/team3-vagrant
 
 
 echo -e "\n--- Add environment variables locally for artisan ---\n"
