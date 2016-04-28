@@ -46,23 +46,6 @@ function jankie {
   echo ""
   instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
   ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
-  reachable="$(ping -c 1 ${ipad} ; echo $?)"
-  if [ ${reachable} = 0 ]; then
-    jankie2
-  else
-    if [ failcount < 5 ]; then
-      failcount++
-      jankie
-    else
-      clear
-      echo Error: We tried and failed 5 times to create a instance that would live.
-      echo Please troubleshoot euca.
-      exit
-    fi
-  fi
-  
-}
-function jankie2 {
   read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
   if test -f "~/.ssh/team3-key";
   then
@@ -93,6 +76,7 @@ function jankie2 {
   mainmenu
 }
 
+
 function production {
   output="$(euca-run-instances emi-c87b2863 -n 1 -k team3-new -g 'Team3-Production' -t m2.xlarge)"
   echo ""
@@ -106,22 +90,6 @@ function production {
   echo ""
   instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
   ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
-  reachable="$(ping -c 1 ${ipad} ; echo $?)"
-  if [ ${reachable} = 0 ]; then
-    production2
-  else
-    if [ failcount < 5 ]; then
-      failcount++
-      production
-    else
-      clear
-      echo Error: We tried and failed 5 times to create a instance that would live.
-      echo Please troubleshoot euca.
-      exit
-    fi
-  fi
-}
-function production2 {
   read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
   if test -f "~/.ssh/team3-key";
   then
