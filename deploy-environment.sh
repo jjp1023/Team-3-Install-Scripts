@@ -74,7 +74,7 @@ function jankie {
 }
 
 function production {
-  output="$(euca-run-instances emi-c87b2863 -n 1 -k team3-new -g 'default' -t m2.xlarge)"
+  output="$(euca-run-instances emi-c87b2863 -n 1 -k team3-new -g 'Team3-Production' -t m2.xlarge)"
   echo ""
   echo '****************************************'
   echo '*                                      *'
