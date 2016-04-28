@@ -2,7 +2,7 @@
 
 # Usage: Run on vagrant machine or another Debian box as root (not sudo - actually switch to root):
 # bash <(curl -s https://raw.githubusercontent.com/ITMT-430/Team-3-Install-Scripts/master/deploy-environment.sh)
-
+failcount=0
 function mainmenu {
   source /euca2ools/creds/eucarc
   clear
@@ -17,10 +17,13 @@ function mainmenu {
   OPTIONS="Jenkins Production Full-Environment Quit"
   select opt in $OPTIONS; do
     if [ "$opt" = "Jenkins" ]; then
+      failcount=0
       jankie
     elif [ "$opt" = "Production" ]; then
+      failcount=0
       production
     elif [ "$opt" = "Full-Environment" ]; then
+      failcount=0
       everything
     elif [ "$opt" = "Quit" ]; then
       exit
@@ -43,6 +46,23 @@ function jankie {
   echo ""
   instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
   ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
+  reachable="$(ping -c 1 ${ipad} ; echo $?)"
+  if [ ${reachable} = 0 ]; then
+    jankie2
+  else
+    if [ failcount < 5 ]; then
+      failcount++
+      jankie
+    else
+      clear
+      echo Error: We tried and failed 5 times to create a instance that would live.
+      echo Please troubleshoot euca.
+      exit
+    fi
+  fi
+  
+}
+function jankie2 {
   read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
   if test -f "~/.ssh/team3-key";
   then
@@ -86,6 +106,22 @@ function production {
   echo ""
   instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
   ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
+  reachable="$(ping -c 1 ${ipad} ; echo $?)"
+  if [ ${reachable} = 0 ]; then
+    production2
+  else
+    if [ failcount < 5 ]; then
+      failcount++
+      production
+    else
+      clear
+      echo Error: We tried and failed 5 times to create a instance that would live.
+      echo Please troubleshoot euca.
+      exit
+    fi
+  fi
+}
+function production2 {
   read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
   if test -f "~/.ssh/team3-key";
   then
