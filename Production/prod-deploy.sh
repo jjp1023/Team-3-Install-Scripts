@@ -90,51 +90,51 @@ sed -i "s/disable_functions = .*//" /etc/php5/cli/php.ini
 
 echo -e "\n--- Configure Apache to use phpmyadmin ---\n"
 echo -e "\n\nListen 81\n" >> /etc/apache2/ports.conf
-#cat > /etc/apache2/conf-available/phpmyadmin.conf << "EOF"
-#<VirtualHost *:81>
-#    ServerAdmin webmaster@localhost
-#    DocumentRoot /usr/share/phpmyadmin
-#    DirectoryIndex index.php
-#    ErrorLog ${APACHE_LOG_DIR}/phpmyadmin-error.log
-#    CustomLog ${APACHE_LOG_DIR}/phpmyadmin-access.log combined
-#</VirtualHost>
-#EOF
-#a2enconf phpmyadmin > /dev/null 2>&1
+cat > /etc/apache2/conf-available/phpmyadmin.conf << "EOF"
+<VirtualHost *:81>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /usr/share/phpmyadmin
+    DirectoryIndex index.php
+    ErrorLog ${APACHE_LOG_DIR}/phpmyadmin-error.log
+    CustomLog ${APACHE_LOG_DIR}/phpmyadmin-access.log combined
+</VirtualHost>
+EOF
+a2enconf phpmyadmin > /dev/null 2>&1
 
-#echo -e "\n--- Add environment variables to Apache ---\n"
-#Put DNS info below
-#cat > /etc/apache2/sites-enabled/000-default.conf <<EOF
-#<VirtualHost *:80>
-#    ServerName irl.sat.iit.edu
-#    Redirect / https://irl.sat.iit.edu
-#    ServerAdmin webmaster@localhost
-#    DocumentRoot /var/www/html
-#    ErrorLog \${APACHE_LOG_DIR}/error.log
-#    CustomLog \${APACHE_LOG_DIR}/access.log combined
-#    SetEnv APP_ENV $APPENV
-#    SetEnv DB_HOST $DBHOST
-#    SetEnv DB_NAME $DBNAME
-#    SetEnv DB_USER $DBUSER
-#    SetEnv DB_PASS $DBPASSWD
-#</VirtualHost>
-#EOF
+echo -e "\n--- Add environment variables to Apache ---\n"
+Put DNS info below
+cat > /etc/apache2/sites-enabled/000-default.conf <<EOF
+<VirtualHost *:80>
+    ServerName irl.sat.iit.edu
+    Redirect / https://irl.sat.iit.edu
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+    SetEnv APP_ENV $APPENV
+    SetEnv DB_HOST $DBHOST
+    SetEnv DB_NAME $DBNAME
+    SetEnv DB_USER $DBUSER
+    SetEnv DB_PASS $DBPASSWD
+</VirtualHost>
+EOF
 
-#cat > /etc/apache2/sites-enabled/default-ssl.conf <<EOF
-#<VirtualHost _default_:443>
-#    ServerName irl.sat.iit.edu
-#    ServerAlias www.irl.sat.iit.edu
-#    ServerAdmin webmaster@localhost
-#    DocumentRoot /var/www/html
-#    ErrorLog \${APACHE_LOG_DIR}/error.log
-#    CustomLog \${APACHE_LOG_DIR}/access.log combined
-#    SSLEngine on
-#    SetEnv APP_ENV $APPENV
-#    SetEnv DB_HOST $DBHOST
-#    SetEnv DB_NAME $DBNAME
-#    SetEnv DB_USER $DBUSER
-#    SetEnv DB_PASS $DBPASSWD
-#</VirtualHost>
-#EOF
+cat > /etc/apache2/sites-enabled/default-ssl.conf <<EOF
+<VirtualHost _default_:443>
+    ServerName irl.sat.iit.edu
+    ServerAlias www.irl.sat.iit.edu
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html
+    ErrorLog \${APACHE_LOG_DIR}/error.log
+    CustomLog \${APACHE_LOG_DIR}/access.log combined
+    SSLEngine on
+    SetEnv APP_ENV $APPENV
+    SetEnv DB_HOST $DBHOST
+    SetEnv DB_NAME $DBNAME
+    SetEnv DB_USER $DBUSER
+    SetEnv DB_PASS $DBPASSWD
+</VirtualHost>
+EOF
 
 echo -e "\n--- Restarting Apache ---\n"
 service apache2 restart > /dev/null 2>&1
@@ -217,7 +217,7 @@ git clone https://github.com/letsencrypt/letsencrypt
 cd letsencrypt
 a2enmod ssl
 service apache2 restart
-./letsencrypt-auto -B 4096 auth --email info@geekkidconsulting.com --agree-tos --text --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
+./letsencrypt-auto --email info@geekkidconsulting.com --agree-tos --text --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
 
 clear
 echo "+++++++++++++++++++++++++++++++++++++"
