@@ -217,7 +217,7 @@ git clone https://github.com/letsencrypt/letsencrypt
 cd letsencrypt
 a2enmod ssl
 service apache2 restart
-./letsencrypt-auto --email info@geekkidconsulting.com --agree-tos --text --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
+./letsencrypt-auto -B 4096 auth --email info@geekkidconsulting.com --agree-tos --text --apache -d irl.sat.iit.edu -d www.irl.sat.iit.edu
 
 clear
 echo "+++++++++++++++++++++++++++++++++++++"
