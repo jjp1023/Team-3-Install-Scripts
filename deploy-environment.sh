@@ -60,7 +60,7 @@ function jankie {
   read -p "Did the script complete successfully? (Y/n)" confirm
   if [ ${confirm} = "Y" ];
   then
-    euca-associate-address -i ${instance} -a 64.131.111.60
+    euca-associate-address -i ${instance} 64.131.111.60
     read -p "Jenkins should be up and running."
   else
     read -p "Are you sure? (Y/n)" confirm
@@ -90,7 +90,8 @@ function production {
   echo ""
   instance="$(echo "${output}" | grep -o 'i-.\{0,8\}' | head -1)"
   ipad="$(euca-describe-instances | grep ${instance} | grep -o '64\.131\.111\..\{0,3\}' | tr -s [:space:])"
-  euca-associate-address -i ${instance} -a 64.131.111.62
+  euca-disassociate-address
+  euca-associate-address -i ${instance} 64.131.111.62
   ipad="64.131.111.62"
   read -p "Please open a new window and ssh into ${ipad} and verify the connection works." nothing
   if test -f "~/.ssh/team3-key";
