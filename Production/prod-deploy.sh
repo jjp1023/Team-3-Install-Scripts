@@ -23,6 +23,7 @@ apt-get install -y build-essential
 apt-get install -y php5
 apt-get install -y php5-dev
 apt-get install -y php-pear
+apt-get install -y php-cas
 pear channel-discover pear.phing.info
 pear install phing/phing
 pear install VersionControl_Git-alpha
