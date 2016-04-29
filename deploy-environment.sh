@@ -146,6 +146,7 @@ if [ $USER = "root" ]; then
     clear
     read -p "Copy your credential file to /euca2ools/creds.zip, then press any key to continue." nothing
     unzip -d creds creds.zip
+    source /euca2ools/creds/eucarc
     echo "source /euca2ools/creds/eucarc">>~/.bashrc
     echo "source /euca2ools/creds/eucarc">>~/.zshrc
     mkdir /bs
